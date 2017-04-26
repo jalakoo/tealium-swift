@@ -5,7 +5,7 @@
 //  Created by Jason Koo on 10/5/16.
 //  Copyright © 2016 tealium. All rights reserved.
 //
-//  Build 2
+//  Build 3
 
 import Foundation
 import ObjectiveC
@@ -202,9 +202,14 @@ extension TealiumModulesManager : TealiumModuleDelegate {
         case .disable:
             // Module requests entire library disable
             disableAll()
+        case .load:
+            modules.first?.load(process)
+        case .save:
+            modules.first?.save(process)
         case .track:
             guard let track = process.track else {
                 // Request made with no track info
+                // TODO: Error handling back into stream?
                 return
             }
             // Send track request to front of chain.

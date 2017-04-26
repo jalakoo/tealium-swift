@@ -5,6 +5,7 @@
 //  Created by Jason Koo on 10/5/16.
 //  Copyright © 2016 tealium. All rights reserved.
 //
+//  Build 2
 
 import Foundation
 
@@ -86,6 +87,18 @@ class TealiumLoggerModule : TealiumModule {
                           logLevel: .verbose)
         case .disable:
             let message = process.successful == true ? "DISABLED" : "FAILED TO DISABLE"
+            logWithPrefix(fromModule: fromModule,
+                          message: message,
+                          logLevel: .verbose)
+        case .load:
+            let errorString = String(describing:process.error)
+            let message = process.successful == true ? "SUCCESSFULLY loaded data" : "FAILED to load data: \(errorString)"
+            logWithPrefix(fromModule: fromModule,
+                          message: message,
+                          logLevel: .verbose)
+        case .save:
+            let errorString = String(describing:process.error)
+            let message = process.successful == true ? "SUCCESSFULLY saved data" : "FAILED to save data: \(errorString)"
             logWithPrefix(fromModule: fromModule,
                           message: message,
                           logLevel: .verbose)

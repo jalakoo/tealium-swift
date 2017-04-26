@@ -4,6 +4,7 @@
 //  Created by Jason Koo on 12/21/16.
 //  Copyright © 2016 Apple, Inc. All rights reserved.
 //
+//  Build 2
 
 #if TEST
     import Foundation
@@ -207,7 +208,8 @@ class TealiumAutotrackingModule : TealiumModule {
         let process = TealiumProcess(type: .track,
                                      successful: true,
                                      track: track,
-                                     error: nil)
+                                     error: nil,
+                                     completion: nil)
         
         self.delegate?.tealiumModuleRequests(module: self, process: process)
         

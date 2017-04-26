@@ -63,7 +63,8 @@ class TealiumModuleTests: XCTestCase {
         let processSuccess = TealiumProcess(type: .enable,
                                             successful: true,
                                             track: nil,
-                                            error: nil)
+                                            error: nil,
+                                            completion: nil)
         
         
         defaultModule?.auto(processSuccess,
@@ -81,7 +82,8 @@ class TealiumModuleTests: XCTestCase {
         let processSuccess = TealiumProcess(type: .disable,
                                             successful: true,
                                             track: nil,
-                                            error: nil)
+                                            error: nil,
+                                            completion: nil)
         
         
         defaultModule?.auto(processSuccess,
@@ -101,7 +103,8 @@ class TealiumModuleTests: XCTestCase {
         let processSuccess = TealiumProcess(type: .track,
                                             successful: true,
                                             track: track,
-                                            error: nil)
+                                            error: nil,
+                                            completion: nil)
         
         
         defaultModule?.auto(processSuccess,
@@ -118,7 +121,8 @@ class TealiumModuleTests: XCTestCase {
         let processSuccess = TealiumProcess(type: .track,
                                             successful: true,
                                             track: nil,
-                                            error: nil)
+                                            error: nil,
+                                            completion: nil)
         
         
         defaultModule?.auto(processSuccess,

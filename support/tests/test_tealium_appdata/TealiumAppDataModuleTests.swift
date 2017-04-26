@@ -43,7 +43,7 @@ class TealiumAppDataModuleTests: XCTestCase {
         
         let vidCheck = "123e4567e89b12d3a456426655440000"
         
-        XCTAssertTrue(vidCheck == vid, "Visitor id mismatch between returned vid:\(vid) \nAnd manual check:\(vidCheck)")
+        XCTAssertTrue(vidCheck == vid, "Visitor id mismatch between returned vid:\(String(describing: vid)) \nAnd manual check:\(vidCheck)")
         
         
     }
@@ -54,7 +54,7 @@ class TealiumAppDataModuleTests: XCTestCase {
         let manualVid = "123e4567e89b12d3a456426655440000"
         let vid = appDataModule?.visitorId(fromUuid: testUuid)
         
-        XCTAssertTrue(manualVid == vid, "VisitorId method does not modify string correctly. \n Returned:\(vid) \n Expected:\(manualVid)")
+        XCTAssertTrue(manualVid == vid, "VisitorId method does not modify string correctly. \n Returned:\(String(describing: vid)) \n Expected:\(manualVid)")
         guard let newData = appDataModule?.newPersistentData(forUuid: testUuid) else {
             
             XCTFail("Could not create newPersistent data from appDataModule")

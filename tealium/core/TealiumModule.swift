@@ -5,7 +5,7 @@
 //  Created by Jason Koo on 10/5/16.
 //  Copyright © 2016 tealium. All rights reserved.
 //
-//  Build 2
+//  Build 3
 
 import Foundation
 
@@ -106,6 +106,24 @@ open class TealiumModule {
         didFinishDisable()
 
     }
+    
+    
+    /// Handle load data request from another module.
+    ///
+    /// - Parameter process: TealiumProcess with load request data
+    open func load(_ process: TealiumProcess) {
+        
+        didFinishLoad(process)
+    }
+    
+    
+    /// Handle save data request from another module.
+    ///
+    /// - Parameter process: TealiumProcess with save request data
+    open func save(_ process: TealiumProcess) {
+        
+        didFinishSave(process)
+    }
 
     /// Handle track requests - usually adding or editing data,
     /// adding info, or dispatching formatted data.
@@ -144,6 +162,10 @@ open class TealiumModule {
             self.enable(config: config)
         case .disable:
             self.disable()
+        case .load:
+            self.load(process)
+        case .save:
+            self.save(process)
         case .track:
             guard let track = process.track else {
                 self.didFailToTrack(process.track,
@@ -164,7 +186,8 @@ open class TealiumModule {
         let process = TealiumProcess(type: .enable,
                                      successful: true,
                                      track: nil,
-                                     error: nil)
+                                     error: nil,
+                                     completion: nil)
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
         
@@ -176,7 +199,8 @@ open class TealiumModule {
         let process = TealiumProcess(type: .enable,
                                      successful: false,
                                      track: nil,
-                                     error: error)
+                                     error: error,
+                                     completion: nil)
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
     }
@@ -185,7 +209,8 @@ open class TealiumModule {
         let process = TealiumProcess(type: .disable,
                                      successful: true,
                                      track: nil,
-                                     error: nil)
+                                     error: nil,
+                                     completion: nil)
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
     }
@@ -195,7 +220,20 @@ open class TealiumModule {
         let process = TealiumProcess(type: .disable,
                                      successful: false,
                                      track: nil,
-                                     error: error)
+                                     error: error,
+                                     completion: nil)
+        delegate?.tealiumModuleFinished(module: self,
+                                        process: process)
+    }
+    
+    open func didFinishLoad(_ process: TealiumProcess) {
+        
+        delegate?.tealiumModuleFinished(module: self,
+                                        process: process)
+    }
+    
+    open func didFinishSave(_ process: TealiumProcess) {
+        
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
     }
@@ -205,7 +243,8 @@ open class TealiumModule {
         let process = TealiumProcess(type: .track,
                                      successful: true,
                                      track: track,
-                                     error: nil)
+                                     error: nil,
+                                     completion: nil)
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
         
@@ -217,7 +256,8 @@ open class TealiumModule {
         let process = TealiumProcess(type: .track,
                                      successful: false,
                                      track: track,
-                                     error: error)
+                                     error: error,
+                                     completion: nil)
         delegate?.tealiumModuleFinished(module: self,
                                         process: process)
         

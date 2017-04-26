@@ -61,7 +61,7 @@ class TealiumAsyncModuleTests: XCTestCase {
 
         self.waitForExpectations(timeout: 1.0, handler: nil)
         
-        XCTAssertTrue(queueName == TealiumAsyncKey.queueName, "NOT on expected background queue. On: \(currentQueueName())")
+        XCTAssertTrue(queueName == TealiumAsyncKey.queueName, "NOT on expected background queue. On: \(String(describing: currentQueueName()))")
     }
     
     func testTrack() {

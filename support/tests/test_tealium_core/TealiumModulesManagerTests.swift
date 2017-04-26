@@ -90,7 +90,7 @@ class TealiumModulesManagerTests: XCTestCase {
                                      completion: {(success, info, error) in
                         
                 if error != nil {
-                    XCTFail("Track error detected:\(error)")
+                    XCTFail("Track error detected:\(String(describing: error))")
                 }
                                         
                 expectation.fulfill()

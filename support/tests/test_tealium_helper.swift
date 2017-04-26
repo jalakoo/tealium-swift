@@ -145,6 +145,8 @@ class test_tealium_helper {
 enum TestTealiumModuleProtocolKey {
     static let enable = "enable"
     static let disable = "disable"
+    static let load = "load"
+    static let save = "save"
     static let track = "track"
 }
 
@@ -162,6 +164,10 @@ extension test_tealium_helper : TealiumModuleDelegate {
             callBack?(module, TestTealiumModuleProtocolKey.enable)
         case .disable:
             callBack?(module, TestTealiumModuleProtocolKey.disable)
+        case .load:
+            callBack?(module, TestTealiumModuleProtocolKey.load)
+        case .save:
+            callBack?(module, TestTealiumModuleProtocolKey.save)
         case .track:
             callBack?(module, TestTealiumModuleProtocolKey.track)
         }

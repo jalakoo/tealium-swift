@@ -267,7 +267,8 @@ public class TealiumLifecycleModule : TealiumModule {
         let process = TealiumProcess(type: .track,
                                      successful: true,
                                      track: track,
-                                     error: nil)
+                                     error: nil,
+                                     completion: nil)
         self.delegate?.tealiumModuleRequests(module: self, process: process)
         
     }

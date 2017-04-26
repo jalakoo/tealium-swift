@@ -5,6 +5,7 @@
 //  Created by Jason Koo on 9/1/16.
 //  Copyright © 2016 tealium. All rights reserved.
 //
+//  Build 2
 
 public enum TealiumKey {
     static let account = "tealium_account"
@@ -44,11 +45,13 @@ public enum TealiumModuleProcessType {
     case enable
     case disable
     case track
+    case load
+    case save
 }
 
 public enum TealiumValue {
     static let libraryName = "swift"
-    static let libraryVersion = "1.2.0"
+    static let libraryVersion = "1.3.0"
 }
 
 public enum TealiumTrackType {
@@ -75,12 +78,12 @@ public enum TealiumTrackType {
     
 }
 
-public typealias tealiumTrackCompletion = ((_ successful: Bool, _ info: [String:Any]?, _ error: Error?)-> Void)
+public typealias tealiumCompletion = ((_ successful: Bool, _ info: [String:Any]?, _ error: Error?)-> Void)
 
 public struct TealiumTrack {
     var data: [String:Any]
     var info: [String:Any]?
-    var completion: tealiumTrackCompletion?
+    var completion: tealiumCompletion?
 }
 
 public struct TealiumProcess {
@@ -88,5 +91,6 @@ public struct TealiumProcess {
     var successful: Bool
     var track: TealiumTrack?
     var error: Error?
+    var completion: tealiumCompletion?
 }
 

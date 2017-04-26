@@ -63,8 +63,9 @@ Datasource | Adds an additional config init option for datasource ids | 550 | Ye
 PersistentData | Adds ability to add persistent data to all track data | 600 | Yes | iOS, macOS, tvOS, watchOS | -
 VolatileData | Adds ability to add session persistent data to all track data - clears upon app termination/close | 700 | Yes | iOS, macOS, tvOS, watchOS | Will supercede any Persistent value with the same key(s)
 [Delegate](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-Swift-Module-Delegate/ta-p/17300) | Adds multicast delegates to monitor or suppress track dispatches | 900 | Yes | iOS, macOS, tvOS, watchOS | -
+Queue | Adds offline & manual queue system | 950 | Yes | iOS, macOS, tvOS, watchOS | Requires SystemConfiguration
 Collect | Packages and delivers track call to Tealium Collect or other custom URL endpoint | 1000 | Yes | iOS, macOS, tvOS, watchOS | -
-[TagManagement](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-Swift-Module-TagManagement/ta-p/16857) | UIWebview based dispatch service that permits library to run TIQ/utag.js | 1100 | Yes | iOS | -
+[TagManagement](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-Swift-Module-TagManagement/ta-p/16857) | UIWebview based dispatch service that permits library to run TIQ/utag.js | 1100 | Yes | iOS | Requires UIWebView
 [RemoteCommands](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-Swift-Module-Remote-Commands/ta-p/17523) | Permits configurable remote code block execution via URLScheme, UIWebView, or TagManagement | 1200 | Yes | iOS, macOS, tvOS, watchOS | -
 
 
@@ -77,6 +78,17 @@ Collect | Packages and delivers track call to Tealium Collect or other custom UR
 
 ## Change Log
 
+- 1.3.0
+    - Added Queue module (build 1). Adds ability to queue track calls if connectivity not available.
+        Resends in order saved when connectivity again available when a track occurrs.
+        Also adds following auto variable:
+            - was_queued (true/false)
+    - Updated Core Constants (build 2) expanded internal structs to support persistence save & load requests
+    - Updated Core TealiumModule base class (build 3) to support updated Process struct and save & load requests
+    - Updated Core TealiumModuleManager (build 3) to support updated save & load features
+    - Updated Autotracking module (build 2) to support updated Process struct
+    - Updated Logger module (build 2) to log success or failures of save & load requests
+
 - 1.2.0
     - Added Datasource module (build 1), which makes available:
         - tealium_datasource
@@ -87,6 +99,7 @@ Collect | Packages and delivers track call to Tealium Collect or other custom UR
     - Refactored TealiumModuleManager (build 3) removed track pre-processing and added a defer block protection within the getClassList() method.
     - Updated Tealium.swift (build 2) added class function to do track pre-processing.
     - Updated Lifecycle module (build 2) to properly return tealium_event & tealium_event_type with auto triggered lifecycle calls.
+
 - 1.1.3
     - Added Lifecycle module (build 1). Adds the following auto variables:
         - lifecycle_diddetectcrash

@@ -24,7 +24,7 @@ class TealiumRemoteCommandResponse : CustomStringConvertible {
     var error : Error?
     
     var description : String {
-        return "<TealiumRemoteCommandResponse: config:\(config()), status:\(status), payload:\(payload()), response: \(urlResponse), data:\(data) error:\(error)>"
+        return "<TealiumRemoteCommandResponse: config:\(config()), status:\(status), payload:\(payload()), response: \(String(describing: urlResponse)), data:\(String(describing: data)) error:\(String(describing: error))>"
     }
     
     convenience init?(urlString: String) {

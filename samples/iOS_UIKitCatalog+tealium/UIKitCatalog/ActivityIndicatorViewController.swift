@@ -26,6 +26,11 @@ class ActivityIndicatorViewController: UITableViewController {
         // When activity is done, use UIActivityIndicatorView.stopAnimating().
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        TealiumHelper.sharedInstance().track(title: "activity view appeared", data: nil)
+    }
+    
     // MARK: - Configuration
 
     func configureGrayActivityIndicatorView() {

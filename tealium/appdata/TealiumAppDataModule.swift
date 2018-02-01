@@ -93,7 +93,7 @@ class TealiumAppDataModule : TealiumModule {
         var newData = [String:Any]()
         newData += appData
         newData += track.data
-        
+
         let newTrack = TealiumTrackRequest(data: newData,
                                            completion: track.completion)
         
